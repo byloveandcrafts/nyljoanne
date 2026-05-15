@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nyl Andrey & Joanne — June 5, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --white:#FDFAF6;--off-white:#F5F0E8;--cream:#EDE7D9;
+  --db:#8FA8BF;--db-lt:#BDD0E2;--db-dk:#5F88A8;
+  --navy:#253349;--silver:#9EA8B3;--sl:#D8DFE6;
+  --td:#1E1E1E;--tm:#555;--tl:#8A8A8A;
+  --gold:#BF9D5A;--gold-lt:#D9BE88;--gold-f:#F0E6CC;
+  --fb:'Jost',sans-serif;
+  --fd:'Playfair Display',Georgia,serif;
+  --fs:'Cormorant',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--td);font-family:var(--fb);font-weight:300;overflow-x:hidden;}
+
+/* ══ AUDIO BAR ══ */
+#audio-bar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(253,250,246,0.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--sl);
+  display:flex;align-items:center;justify-content:center;
+  padding:7px 20px;gap:14px;
+  font-family:var(--fb);font-size:9px;letter-spacing:0.25em;
+  color:var(--tl);text-transform:uppercase;
+}
+#audio-bar button{
+  background:none;border:1px solid var(--db);color:var(--db);
+  padding:4px 18px;font-family:var(--fb);font-size:9px;
+  letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all .3s;
+}
+#audio-bar button:hover{background:var(--db);color:white;}
+
+/* ══ INTRO ══ */
+#intro-overlay{
+  position:fixed;inset:0;z-index:2000;background:var(--navy);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity 1.4s ease,visibility 1.4s ease;overflow:hidden;
+}
+#intro-overlay.hidden{opacity:0;visibility:hidden;}
+.intro-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.istar{position:absolute;border-radius:50%;background:white;animation:twinkle var(--dur) ease-in-out infinite;}
+.icorner{position:absolute;width:110px;height:110px;opacity:.22;}
+.icorner.tl{top:20px;left:20px;}
+.icorner.tr{top:20px;right:20px;transform:scaleX(-1);}
+.icorner.bl{bottom:20px;left:20px;transform:scaleY(-1);}
+.icorner.br{bottom:20px;right:20px;transform:scale(-1,-1);}
+.intro-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px;}
+.i-pre{font-family:var(--fb);font-size:9px;letter-spacing:.5em;color:var(--db-lt);text-transform:uppercase;opacity:0;animation:fadeUp 1s ease .4s forwards;margin-bottom:18px;}
+.i-mono{font-family:var(--fd);font-size:clamp(52px,13vw,106px);font-weight:400;color:var(--gold-lt);letter-spacing:.1em;opacity:0;animation:fadeUp 1.2s ease .7s forwards;line-height:1;}
+.i-line{width:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-lt),transparent);margin:22px auto;animation:growW .9s ease 1.6s forwards;max-width:280px;}
+.i-tag{font-family:var(--fb);font-size:clamp(9px,1.8vw,11px);letter-spacing:.45em;color:var(--sl);text-transform:uppercase;opacity:0;animation:fadeUp 1s ease 1.9s forwards;}
+.i-names{font-family:var(--fd);font-style:italic;font-size:clamp(22px,5vw,40px);color:white;opacity:0;margin-top:14px;animation:fadeUp 1s ease 2.3s forwards;}
+.i-date{font-family:var(--fb);font-size:9px;letter-spacing:.35em;color:var(--db-lt);text-transform:uppercase;opacity:0;margin-top:10px;animation:fadeUp 1s ease 2.7s forwards;}
+.i-btn{margin-top:44px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--fb);font-size:9px;letter-spacing:.4em;text-transform:uppercase;padding:13px 40px;cursor:pointer;transition:all .4s;opacity:0;animation:fadeUp 1s ease 3.2s forwards;}
+.i-btn:hover{background:var(--gold);color:var(--navy);}
+
+/* ══ KEYFRAMES ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes growW{from{width:0}to{width:280px}}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.85}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ══ HERO ══ */
+#main-content{padding-top:42px;}
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  position:relative;padding:100px 28px 80px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(189,208,226,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 80% 85%, rgba(191,157,90,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(242,237,226,0.6) 0%, transparent 80%),
+    linear-gradient(170deg,#FDFAF6 0%,#F5EFE2 45%,#EDF2F7 100%);
+}
+/* Elegant corner SVG ornaments replace botanicals */
+.hero-corner{position:absolute;width:clamp(60px,10vw,100px);height:clamp(60px,10vw,100px);opacity:.18;pointer-events:none;}
+.hero-corner.tl{top:52px;left:16px;}
+.hero-corner.tr{top:52px;right:16px;transform:scaleX(-1);}
+.hero-corner.bl{bottom:36px;left:16px;transform:scaleY(-1);}
+.hero-corner.br{bottom:36px;right:16px;transform:scale(-1,-1);}
+/* Subtle center orb glow */
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 48%,rgba(143,168,191,0.09) 0%,transparent 70%);pointer-events:none;}
+
+#sparkle-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.h-pre{font-family:var(--fb);font-size:9px;letter-spacing:.5em;color:var(--db-dk);text-transform:uppercase;opacity:0;animation:fadeUp 1s ease .3s forwards;position:relative;z-index:1;margin-bottom:6px;}
+.h-rule{width:36px;height:1px;background:var(--db-lt);margin:0 auto 28px;opacity:0;animation:fadeUp 1s ease .5s forwards;position:relative;z-index:1;}
+.h-names{font-family:var(--fd);font-size:clamp(44px,11vw,86px);font-weight:400;color:var(--td);line-height:1.08;letter-spacing:.02em;position:relative;z-index:1;opacity:0;animation:fadeUp 1s ease .6s forwards;}
+.h-names .amp{font-family:var(--fd);font-style:italic;font-size:.52em;color:var(--db);display:block;margin:2px 0;}
+.h-tag{font-family:var(--fd);font-style:italic;font-size:clamp(15px,2.5vw,20px);color:var(--tl);margin-top:18px;letter-spacing:.04em;opacity:0;animation:fadeUp 1s ease .85s forwards;position:relative;z-index:1;}
+.h-date{margin-top:36px;position:relative;z-index:1;opacity:0;animation:fadeUp 1s ease 1.05s forwards;}
+.h-date-row{display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;}
+.h-date-row::before,.h-date-row::after{content:'';flex:1;max-width:68px;height:1px;background:var(--sl);}
+.h-date-txt{font-family:var(--fb);font-size:clamp(9px,1.8vw,11px);letter-spacing:.28em;color:var(--db-dk);text-transform:uppercase;}
+.scroll-hint{position:absolute;bottom:28px;display:flex;flex-direction:column;align-items:center;gap:5px;font-family:var(--fb);font-size:8px;letter-spacing:.35em;color:var(--tl);text-transform:uppercase;animation:bounce 2.2s ease infinite;}
+.scroll-hint svg{width:14px;}
+
+/* ══ DIVIDERS ══ */
+.full-div{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--sl),transparent);}
+.blue-band{background:var(--db);padding:20px 24px;text-align:center;}
+.blue-band p{font-family:var(--fb);font-size:9px;letter-spacing:.45em;color:white;text-transform:uppercase;opacity:.9;}
+
+/* ══ SECTION CHROME ══ */
+section{padding:78px 24px;max-width:920px;margin:0 auto;}
+.eyebrow{font-family:var(--fb);font-size:9px;letter-spacing:.5em;color:var(--db);text-align:center;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:var(--fd);font-size:clamp(26px,5vw,42px);font-weight:400;text-align:center;color:var(--td);margin-bottom:6px;}
+.sec-sub{font-family:var(--fd);font-style:italic;font-size:15px;color:var(--tl);text-align:center;margin-bottom:42px;}
+.orn{display:flex;align-items:center;gap:12px;justify-content:center;margin:14px auto 42px;max-width:240px;}
+.orn::before,.orn::after{content:'';flex:1;height:1px;background:var(--sl);}
+.orn span{font-size:11px;color:var(--db-lt);letter-spacing:5px;}
+
+/* ══ COUNTDOWN ══ */
+.cd-wrap{background:linear-gradient(to right,var(--off-white),var(--white),var(--off-white));border-top:1px solid var(--cream);border-bottom:1px solid var(--cream);padding:56px 24px 52px;text-align:center;position:relative;overflow:hidden;}
+.cd-wm{position:absolute;font-family:var(--fd);font-style:italic;font-size:clamp(80px,18vw,160px);color:var(--cream);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;opacity:.7;}
+.cd-grid{display:flex;justify-content:center;gap:clamp(12px,4vw,52px);position:relative;z-index:1;}
+.cc{text-align:center;}
+.cn{font-family:var(--fd);font-size:clamp(40px,10vw,70px);font-weight:400;color:var(--navy);line-height:1;display:block;}
+.cl{font-family:var(--fb);font-size:8px;letter-spacing:.35em;color:var(--tl);text-transform:uppercase;margin-top:6px;display:block;}
+.cs{font-family:var(--fd);font-size:44px;color:var(--db-lt);align-self:flex-start;margin-top:8px;line-height:1;}
+
+/* ══ EVENT CARDS (double border) ══ */
+.event-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px;}
+.ecw{position:relative;padding:3px;}
+.ecw::before{content:'';position:absolute;inset:0;border:1px solid var(--sl);pointer-events:none;}
+.ecw::after{content:'';position:absolute;inset:8px;border:1px solid var(--cream);pointer-events:none;z-index:0;}
+.ec{background:var(--white);padding:42px 28px 36px;text-align:center;position:relative;z-index:1;}
+.ec::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:38px;height:2px;background:var(--db);}
+.ec-icon{font-size:22px;margin-bottom:18px;display:block;}
+
+/* ══ IN-CARD PHOTO ══ */
+.ec-photo{margin:-42px -28px 28px;overflow:hidden;line-height:0;}
+.ec-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(8%) brightness(.98);}
+.ec-photo-ph{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:var(--cream);color:var(--tl);}
+.ec-photo-ph span{font-family:var(--fb);font-size:9px;letter-spacing:.2em;text-align:center;padding:0 12px;}
+.ec-eye{font-family:var(--fb);font-size:8px;letter-spacing:.45em;color:var(--db);text-transform:uppercase;margin-bottom:10px;}
+.ec-title{font-family:var(--fd);font-size:21px;font-weight:400;color:var(--td);margin-bottom:12px;}
+.ec-body{font-family:var(--fb);font-size:13px;font-weight:300;color:var(--tm);line-height:1.9;}
+.ec-body strong{font-weight:500;color:var(--td);}
+
+/* ══ PROGRAM ══ */
+.prog-list{max-width:500px;margin:0 auto;border-left:1px solid var(--db-lt);padding-left:36px;}
+.pi{position:relative;margin-bottom:32px;}
+.pi::before{content:'';position:absolute;left:-42px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--white);border:1px solid var(--db);}
+.pi::after{content:'';position:absolute;left:-39px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--db-lt);}
+.pt{font-family:var(--fb);font-size:9px;letter-spacing:.3em;color:var(--db-dk);text-transform:uppercase;margin-bottom:5px;}
+.pn{font-family:var(--fd);font-size:18px;font-weight:400;color:var(--td);}
+
+/* ══ DRESS CODE ══ */
+.dp{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:28px 0 20px;}
+.sw{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.sw-c{width:60px;height:60px;border-radius:50%;border:1px solid rgba(0,0,0,.07);box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.sw-n{font-family:var(--fb);font-size:8px;letter-spacing:.2em;color:var(--tl);text-align:center;}
+.dn-box{max-width:540px;margin:24px auto 0;border:1px solid var(--sl);padding:3px;}
+.dn-inner{border:1px solid var(--cream);padding:20px 26px;background:var(--off-white);font-family:var(--fb);font-size:13px;font-style:italic;color:var(--tm);line-height:1.9;font-weight:300;}
+.no-white{font-family:var(--fb);font-size:9px;letter-spacing:.3em;color:#b04040;margin-top:16px;text-align:center;text-transform:uppercase;}
+
+/* ══ ENTOURAGE ══ */
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px;text-align:center;}
+.eg-g{text-align:center;}
+.eg-t{font-family:var(--fb);font-size:8px;letter-spacing:.4em;color:var(--db-dk);text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--cream);}
+.eg-n{font-family:var(--fd);font-size:16px;font-weight:400;color:var(--td);line-height:2.1;}
+.sp-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:center;}
+
+/* ══ QUOTE STRIP ══ */
+.qs{background:var(--off-white);border-top:1px solid var(--cream);border-bottom:1px solid var(--cream);padding:52px 32px;text-align:center;}
+.qs blockquote{font-family:var(--fd);font-style:italic;font-size:clamp(16px,3.5vw,27px);font-weight:400;color:var(--td);max-width:620px;margin:0 auto;line-height:1.65;}
+.qs cite{display:block;margin-top:16px;font-family:var(--fb);font-size:8px;letter-spacing:.4em;color:var(--db);text-transform:uppercase;font-style:normal;}
+
+/* ══ REMINDER ══ */
+.rem{background:var(--navy);text-align:center;padding:60px 24px;position:relative;overflow:hidden;}
+.rem::before{content:'"';position:absolute;font-family:var(--fd);font-size:300px;font-style:italic;color:rgba(255,255,255,.03);top:-40px;left:50%;transform:translateX(-50%);pointer-events:none;line-height:1;}
+.rem-icon{font-size:28px;margin-bottom:14px;}
+.rem p{font-family:var(--fb);font-size:clamp(13px,2.2vw,15px);font-weight:300;line-height:2.1;color:rgba(255,255,255,.72);max-width:620px;margin:0 auto;}
+.rem strong{color:var(--gold-lt);font-weight:500;}
+
+/* ══ RSVP ══ */
+.rsvp-w{max-width:680px;margin:0 auto;text-align:center;}
+.rsvp-card{border:1px solid var(--sl);padding:3px;margin-bottom:26px;}
+.rsvp-ci{border:1px solid var(--cream);padding:28px 32px;background:var(--off-white);font-family:var(--fd);font-style:italic;font-size:17px;color:var(--tm);line-height:1.9;position:relative;}
+.rsvp-ci::before{content:'"';font-size:70px;color:var(--db-lt);position:absolute;top:-8px;left:10px;font-family:var(--fd);line-height:1;opacity:.35;}
+.rsvp-dl{font-family:var(--fb);font-size:9px;letter-spacing:.3em;color:var(--db-dk);margin-bottom:22px;text-transform:uppercase;}
+.rsvp-fc{border:1px solid var(--sl);padding:6px;background:var(--white);}
+.rsvp-fc iframe{width:100%;border:none;height:680px;display:block;}
+.rsvp-ph{padding:60px 24px;background:var(--off-white);border:1px dashed var(--silver);text-align:center;}
+.rsvp-ph p{font-family:var(--fb);font-size:10px;letter-spacing:.2em;color:var(--tl);margin-bottom:6px;}
+.rsvp-ph code{font-size:11px;color:var(--db-dk);background:var(--cream);padding:4px 10px;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--navy);text-align:center;padding:68px 24px 48px;color:rgba(255,255,255,.6);position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:56px;height:2px;background:var(--gold);}
+.f-mono{font-family:var(--fd);font-size:40px;font-weight:400;color:var(--gold-lt);letter-spacing:.12em;margin-bottom:18px;display:block;}
+footer p{font-family:var(--fb);font-weight:300;font-size:14px;color:rgba(255,255,255,.52);line-height:1.9;}
+footer em{font-style:italic;color:rgba(255,255,255,.7);}
+.f-date{font-family:var(--fb);font-size:8px;letter-spacing:.4em;color:var(--db-lt);margin-top:22px;text-transform:uppercase;}
+.f-love{display:inline-block;margin-top:28px;font-family:var(--fb);font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.22);text-transform:uppercase;}
+
+/* ══ FADE-IN ══ */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ══ MOBILE ══ */
+@media(max-width:768px){
+  section{padding:56px 20px;}
+  .event-cards{grid-template-columns:1fr;}
+  .eg{grid-template-columns:1fr 1fr;}
+  .sp-cols{grid-template-columns:1fr 1fr;}
+  .qs{padding:40px 20px;}
+  .rsvp-ci{padding:22px 20px;font-size:15px;}
+  .cd-wrap{padding:44px 16px 40px;}
+  .blue-band p{letter-spacing:.25em;font-size:8px;}
+}
+@media(max-width:500px){
+  .eg{grid-template-columns:1fr;}
+  .sp-cols{grid-template-columns:1fr;}
+  .h-date-row::before,.h-date-row::after{display:none;}
+  .hero-corner{opacity:.10;}
+  section{padding:48px 18px;}
+  .ec{padding:36px 20px 28px;}
+  .ec-photo{margin:-36px -20px 22px;}
+  .prog-list{padding-left:28px;}
+  .pi::before{left:-35px;}
+  .pi::after{left:-32px;}
+  .dp{gap:14px;}
+  .sw-c{width:50px;height:50px;}
+  /* entourage rows with inline grid override */
+  .eg[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .eg[style*="grid-template-columns:1fr;"]{grid-template-columns:1fr!important;}
+}
+</style>
+</head>
+<body>
+
+<audio id="bg-music" loop preload="auto">
+  <source src="wedding-music.mp3" type="audio/mpeg"/>
+</audio>
+
+<div id="audio-bar">
+  <span>♪ &nbsp; Nyl Andrey &amp; Joanne</span>
+  <button id="music-btn" onclick="toggleMusic()">▶ &nbsp; Play</button>
+</div>
+
+<!-- ══════════ INTRO ══════════ -->
+<div id="intro-overlay">
+  <div class="intro-stars" id="stars-container"></div>
+
+  <!-- corner ornaments -->
+  <svg class="icorner tl" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 106 L4 4 L106 4" stroke="#BDD0E2" stroke-width="1"/>
+    <path d="M12 98 L12 12 L98 12" stroke="#BDD0E2" stroke-width="0.5"/>
+    <circle cx="4" cy="4" r="3" fill="#BDD0E2" opacity="0.6"/>
+    <path d="M4 32 Q20 18 32 4" stroke="#BDD0E2" stroke-width="0.6" fill="none"/>
+    <path d="M4 54 Q32 30 54 4" stroke="#BDD0E2" stroke-width="0.3" fill="none"/>
+    <path d="M4 74 Q44 44 74 4" stroke="#BDD0E2" stroke-width="0.2" fill="none"/>
+  </svg>
+  <svg class="icorner tr" viewBox="0 0 110 110" fill="none">
+    <path d="M4 106 L4 4 L106 4" stroke="#BDD0E2" stroke-width="1"/>
+    <path d="M12 98 L12 12 L98 12" stroke="#BDD0E2" stroke-width="0.5"/>
+    <circle cx="4" cy="4" r="3" fill="#BDD0E2" opacity="0.6"/>
+    <path d="M4 32 Q20 18 32 4" stroke="#BDD0E2" stroke-width="0.6" fill="none"/>
+    <path d="M4 54 Q32 30 54 4" stroke="#BDD0E2" stroke-width="0.3" fill="none"/>
+  </svg>
+  <svg class="icorner bl" viewBox="0 0 110 110" fill="none">
+    <path d="M4 106 L4 4 L106 4" stroke="#BDD0E2" stroke-width="1"/>
+    <path d="M12 98 L12 12 L98 12" stroke="#BDD0E2" stroke-width="0.5"/>
+    <circle cx="4" cy="4" r="3" fill="#BDD0E2" opacity="0.6"/>
+    <path d="M4 32 Q20 18 32 4" stroke="#BDD0E2" stroke-width="0.6" fill="none"/>
+  </svg>
+  <svg class="icorner br" viewBox="0 0 110 110" fill="none">
+    <path d="M4 106 L4 4 L106 4" stroke="#BDD0E2" stroke-width="1"/>
+    <path d="M12 98 L12 12 L98 12" stroke="#BDD0E2" stroke-width="0.5"/>
+    <circle cx="4" cy="4" r="3" fill="#BDD0E2" opacity="0.6"/>
+    <path d="M4 32 Q20 18 32 4" stroke="#BDD0E2" stroke-width="0.6" fill="none"/>
+  </svg>
+
+  <div class="intro-inner">
+    <div class="i-pre">You are cordially invited to the wedding of</div>
+    <div class="i-mono">A &amp; J</div>
+    <div class="i-line"></div>
+    <div class="i-tag">Nothing fancy, just Love</div>
+    <div class="i-names">Nyl Andrey &amp; Joanne</div>
+    <div class="i-date">June 5, 2026 &nbsp;·&nbsp; Legazpi City, Albay</div>
+    <button class="i-btn" onclick="enterSite()">Enter &nbsp;✦&nbsp; Open Invitation</button>
+  </div>
+</div>
+
+<!-- ══════════ MAIN ══════════ -->
+<div id="main-content" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Elegant corner ornaments -->
+    <svg class="hero-corner tl" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 96 L4 4 L96 4" stroke="#8FA8BF" stroke-width="1.2"/>
+      <path d="M14 86 L14 14 L86 14" stroke="#8FA8BF" stroke-width="0.5"/>
+      <circle cx="4" cy="4" r="2.5" fill="#BF9D5A" opacity="0.7"/>
+      <circle cx="14" cy="14" r="1.5" fill="#8FA8BF" opacity="0.5"/>
+      <path d="M4 36 Q22 20 36 4" stroke="#BF9D5A" stroke-width="0.5" fill="none" opacity="0.6"/>
+      <path d="M4 60 Q38 32 60 4" stroke="#8FA8BF" stroke-width="0.35" fill="none" opacity="0.5"/>
+    </svg>
+    <svg class="hero-corner tr" viewBox="0 0 100 100" fill="none">
+      <path d="M4 96 L4 4 L96 4" stroke="#8FA8BF" stroke-width="1.2"/>
+      <path d="M14 86 L14 14 L86 14" stroke="#8FA8BF" stroke-width="0.5"/>
+      <circle cx="4" cy="4" r="2.5" fill="#BF9D5A" opacity="0.7"/>
+      <circle cx="14" cy="14" r="1.5" fill="#8FA8BF" opacity="0.5"/>
+      <path d="M4 36 Q22 20 36 4" stroke="#BF9D5A" stroke-width="0.5" fill="none" opacity="0.6"/>
+    </svg>
+    <svg class="hero-corner bl" viewBox="0 0 100 100" fill="none">
+      <path d="M4 96 L4 4 L96 4" stroke="#8FA8BF" stroke-width="1.2"/>
+      <path d="M14 86 L14 14 L86 14" stroke="#8FA8BF" stroke-width="0.5"/>
+      <circle cx="4" cy="4" r="2.5" fill="#BF9D5A" opacity="0.7"/>
+      <path d="M4 36 Q22 20 36 4" stroke="#BF9D5A" stroke-width="0.5" fill="none" opacity="0.6"/>
+    </svg>
+    <svg class="hero-corner br" viewBox="0 0 100 100" fill="none">
+      <path d="M4 96 L4 4 L96 4" stroke="#8FA8BF" stroke-width="1.2"/>
+      <path d="M14 86 L14 14 L86 14" stroke="#8FA8BF" stroke-width="0.5"/>
+      <circle cx="4" cy="4" r="2.5" fill="#BF9D5A" opacity="0.7"/>
+    </svg>
+
+    <div class="h-pre">Together with their families</div>
+    <div class="h-rule"></div>
+    <h1 class="h-names">
+      Nyl Andrey
+      <span class="amp">&amp;</span>
+      Joanne
+    </h1>
+    <p class="h-tag">"Nothing fancy, just Love."</p>
+    <div class="h-date">
+      <div class="h-date-row">
+        <span class="h-date-txt">June 5, 2026 &nbsp;·&nbsp; Friday &nbsp;·&nbsp; 2:00 PM</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ACCENT BAND -->
+  <div class="blue-band">
+    <p>June 5, 2026 &nbsp;✦&nbsp; Iglesia ni Cristo, Legazpi City &nbsp;✦&nbsp; Hotel Lucca Reception</p>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="cd-wrap fade-in">
+    <div class="cd-wm">A &amp; J</div>
+    <div class="eyebrow" style="margin-bottom:26px;">Counting Down to Forever</div>
+    <div class="cd-grid">
+      <div class="cc"><span class="cn" id="cd-days">00</span><span class="cl">Days</span></div>
+      <div class="cs">·</div>
+      <div class="cc"><span class="cn" id="cd-hours">00</span><span class="cl">Hours</span></div>
+      <div class="cs">·</div>
+      <div class="cc"><span class="cn" id="cd-mins">00</span><span class="cl">Minutes</span></div>
+      <div class="cs">·</div>
+      <div class="cc"><span class="cn" id="cd-secs">00</span><span class="cl">Seconds</span></div>
+    </div>
+  </div>
+
+  <div class="full-div"></div>
+
+  <!-- CEREMONY -->
+  <section class="fade-in">
+    <div class="eyebrow">Where It All Begins</div>
+    <h2 class="sec-title">The Ceremony &amp; Reception</h2>
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <div class="event-cards">
+      <div class="ecw">
+        <div class="ec">
+          <div class="ec-photo">
+            <img src="ceremony.png" alt="Iglesia ni Cristo Ceremony Venue"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+            <div class="ec-photo-ph" style="display:none;">
+              <span style="font-size:26px;">⛪</span>
+              <span>Place ceremony.png in the same folder</span>
+            </div>
+          </div>
+          <span class="ec-icon">⛪</span>
+          <div class="ec-eye">Holy Matrimony</div>
+          <div class="ec-title">Iglesia ni Cristo</div>
+          <div class="ec-body">
+            Locale Congregation of Legazpi City<br/>
+            Ecclesiastical District of Albay<br/><br/>
+            <strong>242 Rizal St., Brgy. 19 Cabagñan</strong><br/>
+            Legazpi City, Albay<br/><br/>
+            Friday, June 5, 2026 &nbsp;·&nbsp; 2:00 PM
+          </div>
+        </div>
+      </div>
+      <div class="ecw">
+        <div class="ec">
+          <div class="ec-photo">
+            <img src="venue.jpg" alt="Hotel Lucca Reception Venue"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+            <div class="ec-photo-ph" style="display:none;">
+              <span style="font-size:26px;">🏨</span>
+              <span>Hotel Lucca &nbsp;·&nbsp; Legazpi City</span>
+              <span>Place photo.png in the same folder</span>
+            </div>
+          </div>
+          <span class="ec-icon">🥂</span>
+          <div class="ec-eye">Reception</div>
+          <div class="ec-title">Hotel Lucca</div>
+          <div class="ec-body">
+            Jasmin St., Legazpi Port District<br/>
+            Legazpi City, Albay<br/><br/>
+            <em>Immediately following the ceremony</em><br/><br/>
+            Pica Pica &nbsp;·&nbsp; Wedding Program &nbsp;·&nbsp; Early Dinner
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-div"></div>
+
+  <!-- QUOTE STRIP -->
+  <div class="qs fade-in">
+    <blockquote>
+      "Two souls, one heart — bound not by grand gestures,<br/>
+      but by the quiet, steadfast promise of love."
+    </blockquote>
+    <cite>Nyl Andrey &amp; Joanne &nbsp;·&nbsp; June 5, 2026</cite>
+  </div>
+
+  <div class="full-div"></div>
+
+  <!-- PROGRAM -->
+  <section class="fade-in">
+    <div class="eyebrow">The Flow of the Day</div>
+    <h2 class="sec-title">Wedding Program</h2>
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+    <div class="prog-list">
+      <div class="pi"><div class="pt">1:30 PM</div><div class="pn">Guests Arrival</div></div>
+      <div class="pi"><div class="pt">2:00 PM</div><div class="pn">The Ceremony</div></div>
+      <div class="pi"><div class="pt">3:30 PM</div><div class="pn">Reception &nbsp;·&nbsp; Pica Pica Time</div></div>
+      <div class="pi"><div class="pt">4:00 PM</div><div class="pn">Wedding Program &amp; Early Dinner</div></div>
+    </div>
+  </section>
+
+  <div class="full-div"></div>
+
+  <!-- DRESS CODE -->
+  <section class="fade-in" style="text-align:center;">
+    <div class="eyebrow">Dress to Impress</div>
+    <h2 class="sec-title">Dress Code</h2>
+    <div class="sec-sub">Sunday Dress (Long Dress or Long Sleeves Polo)</div>
+    <div class="dp">
+      <div class="sw"><div class="sw-c" style="background:#8FA8BF;"></div><div class="sw-n">Dusty Blue</div></div>
+      <div class="sw"><div class="sw-c" style="background:#253349;"></div><div class="sw-n">Navy Blue</div></div>
+      <div class="sw"><div class="sw-c" style="background:#87CEEB;"></div><div class="sw-n">Sky Blue</div></div>
+      <div class="sw"><div class="sw-c" style="background:#9EA8B3;"></div><div class="sw-n">Silver / Gray</div></div>
+    </div>
+    <div class="dn-box">
+      <div class="dn-inner">
+        We'd love for you to join our celebration wearing conservative attire —
+        long dresses or long sleeved polo for gentlemen.
+      </div>
+    </div>
+    <div class="no-white">✕ &nbsp; Strictly No White &nbsp; ✕</div>
+  </section>
+
+  <div class="full-div"></div>
+
+  <!-- ENTOURAGE -->
+  <section class="fade-in">
+    <div class="eyebrow">Those Who Walk Beside Them</div>
+    <h2 class="sec-title">The Entourage</h2>
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+
+    <!-- Row 1: Parents -->
+    <div class="eg" style="grid-template-columns:1fr 1fr;max-width:640px;margin:0 auto 48px;">
+      <div class="eg-g">
+        <div class="eg-t">Parents of the Groom</div>
+        <div class="eg-n">Jose C. Mirando</div>
+        <div class="eg-n">Elma P. Mirando</div>
+      </div>
+      <div class="eg-g">
+        <div class="eg-t">Parents of the Bride</div>
+        <div class="eg-n">Andy B. Capuno</div>
+        <div class="eg-n">Amelyn B. Capuno</div>
+      </div>
+    </div>
+
+    <!-- Row 2: Principal Sponsors -->
+    <div class="eg" style="grid-template-columns:1fr;max-width:360px;margin:0 auto 48px;">
+      <div class="eg-g">
+        <div class="eg-t">Matron & Best Man</div>
+        <div class="eg-n">Matron: Luzviminda M. Lorilla</div>
+        <div class="eg-n">Best Man: Bro. Kenn M. Cuaresma</div>
+      </div>
+    </div>
+
+    <!-- Row 3: Bridesmaids & Groomsmen -->
+    <div class="eg" style="grid-template-columns:1fr 1fr;margin-bottom:48px;">
+      <div class="eg-g">
+        <div class="eg-t">Bridesmaids</div>
+        <div class="eg-n">Jeannie Rose H. Donquillo</div>
+        <div class="eg-n">Mycah P. Recario</div>
+        <div class="eg-n">Christine C. Balino</div>
+        <div class="eg-n">Sarah C. Balino</div>
+        <div class="eg-n">Czarina Kamille B. Pili</div>
+        <div class="eg-n">Jhane Kimberly B. Belen</div>
+        <div class="eg-n">Leian Queenee D. Llenas</div>
+      </div>
+      <div class="eg-g">
+        <div class="eg-t">Groomsmen</div>
+        <div class="eg-n">Bro. Armand Jay A. Baraceros</div>
+        <div class="eg-n">Feam Czoloe A. Capuno</div>
+        <div class="eg-n">Ivan Rene B. Pili</div>
+        <div class="eg-n">Lyann Josh D. Belen</div>
+        <div class="eg-n">Joel P. Mirando</div>
+        <div class="eg-n">Bro. Mcnelski B. Castillo</div>
+        <div class="eg-n">Bro. Aaron Paul E. Pacarro</div>
+      </div>
+    </div>
+
+    <!-- Row 4: Flower Girls & Ring Bearers -->
+    <div class="eg" style="grid-template-columns:1fr 1fr;max-width:580px;margin:0 auto;">
+      <div class="eg-g">
+        <div class="eg-t">Flower Girls</div>
+        <div class="eg-n">Jhayla L. Mirando</div>
+        <div class="eg-n">Elisse Miel L. Alcala</div>
+      </div>
+      <div class="eg-g">
+        <div class="eg-t">Ring Bearers</div>
+        <div class="eg-n">Jharen King G. Mirando</div>
+        <div class="eg-n">Jharel John L. Mirando</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-div"></div>
+
+  <!-- SPONSORS -->
+  <section class="fade-in">
+    <div class="eyebrow">Their Guiding Lights</div>
+    <h2 class="sec-title">Principal Sponsors</h2>
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+    <div class="sp-cols" style="max-width:640px;margin:0 auto;">
+      <div class="eg-g">
+        <div class="eg-t">Ninongs</div>
+        <div class="eg-n">Bro. Barry C. Javier</div>
+        <div class="eg-n">Bro. Lodencio H. Villafuerte Jr.</div>
+        <div class="eg-n">Fernando A. Capuno</div>
+        <div class="eg-n">Jonathan A. Serrano</div>
+        <div class="eg-n">Ruelo R. Soriao</div>
+      </div>
+      <div class="eg-g">
+        <div class="eg-t">Ninangs</div>
+        <div class="eg-n">Sis. Susan G. Reyes</div>
+        <div class="eg-n">Sis. (to follow)</div>
+        <div class="eg-n">Guada G. Mendoza</div>
+        <div class="eg-n">Edna M. Mirabuna</div>
+        <div class="eg-n">Michelle L. Alcala</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-div"></div>
+
+  <!-- REMINDER -->
+  <div class="rem fade-in">
+    <div class="rem-icon">📵</div>
+    <p>
+      We humbly request our dearest family and friends to please
+      <strong>arrive at the church and venue on time</strong>, and to
+      <strong>refrain from using phones or other devices during the ceremony.</strong><br/><br/>
+      Rest assured that every moment will be beautifully captured by our
+      professional photo and video team.<br/>
+      Thank you for your love and cooperation.
+    </p>
+  </div>
+
+  <!-- RSVP -->
+  <section class="fade-in">
+    <div class="eyebrow">Will You Be There?</div>
+    <h2 class="sec-title">RSVP</h2>
+    <div class="orn"><span>✦ ✦ ✦</span></div>
+    <div class="rsvp-w">
+      <div class="rsvp-card">
+        <div class="rsvp-ci">
+          We've reserved <strong>___ seat/s</strong> especially for you.
+          Kindly confirm by <strong>May 26, 2026.</strong>
+          As much as we'd love to include everyone, we're only able to accommodate the invited guest/s.
+          <div style="margin-top:12px;font-family:var(--fb);font-size:9px;letter-spacing:.3em;color:var(--db-dk);text-transform:uppercase;">
+            Strictly no plus one.
+          </div>
+        </div>
+      </div>
+      <div class="rsvp-dl">✦ &nbsp; RSVP Deadline: May 26, 2026 &nbsp; ✦</div>
+      <div class="rsvp-fc">
+        <div class="rsvp-ph">
+          
+        </div>
+        <!-- UNCOMMENT & replace:
+        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+          width="100%" height="680" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="f-mono">A &amp; J</span>
+    <p>Nyl Andrey &amp; Joanne<br/><em>"Nothing fancy, just Love."</em></p>
+    <div class="f-date">June 5, 2026 &nbsp;✦&nbsp; Legazpi City, Albay</div>
+    <div class="f-love">Made with love ♡</div>
+  </footer>
+
+</div>
+
+<script>
+/* STARS */
+const sc=document.getElementById('stars-container');
+for(let i=0;i<90;i++){const s=document.createElement('div');s.className='istar';const z=Math.random()*2.2+0.6;s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${Math.random()*3+1.8}s;animation-delay:${Math.random()*3}s;`;sc.appendChild(s);}
+
+/* ENTER */
+function enterSite(){
+  document.getElementById('intro-overlay').classList.add('hidden');
+  document.getElementById('main-content').style.display='block';
+  setTimeout(tryAutoPlay,900);
+  setTimeout(initFadeIns,120);
+  resizeCanvas();requestAnimationFrame(tick);
+}
+
+/* MUSIC */
+const aud=document.getElementById('bg-music'),btn=document.getElementById('music-btn');
+let playing=false;
+function tryAutoPlay(){aud.volume=.3;aud.play().then(()=>{playing=true;btn.textContent='⏸  Pause';}).catch(()=>{playing=false;btn.textContent='▶  Play';});}
+function toggleMusic(){if(playing){aud.pause();btn.textContent='▶  Play';playing=false;}else{aud.play();btn.textContent='⏸  Pause';playing=true;}}
+
+/* COUNTDOWN */
+function uCD(){const t=new Date('2026-06-05T14:00:00+08:00'),n=new Date(),d=t-n;if(d<=0)return;document.getElementById('cd-days').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('cd-hours').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');document.getElementById('cd-mins').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');document.getElementById('cd-secs').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');}
+setInterval(uCD,1000);uCD();
+
+/* SPARKLES */
+const cv=document.getElementById('sparkle-canvas'),ctx=cv.getContext('2d');
+let W=0,H=0,pts=[];
+const COLS=['#8FA8BF','#BDD0E2','#BF9D5A','#D9BE88','#D8DFE6','#fff','#5F88A8'];
+function resizeCanvas(){const h=cv.parentElement;W=cv.width=h.offsetWidth;H=cv.height=h.offsetHeight;}
+window.addEventListener('resize',resizeCanvas);
+function rnd(a,b){return a+Math.random()*(b-a);}
+function mkP(){return{x:rnd(0,W),y:rnd(-30,-2),sz:rnd(1.2,4.2),sp:rnd(.35,1),dr:rnd(-.3,.3),op:rnd(.25,.85),cl:COLS[Math.floor(Math.random()*COLS.length)],tp:rnd(0,Math.PI*2),ts:rnd(.012,.028),ty:Math.random()<.52?'s':'d'};}
+function dStar(x,y,s,a,c){ctx.save();ctx.globalAlpha=a;ctx.strokeStyle=c;ctx.lineCap='round';ctx.lineWidth=s*.3;[[0,-s],[0,s],[-s,0],[s,0]].forEach(([dx,dy])=>{ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+dx,y+dy);ctx.stroke();});const g=s*.6;ctx.lineWidth=s*.15;[[-g,-g],[g,-g],[g,g],[-g,g]].forEach(([dx,dy])=>{ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+dx,y+dy);ctx.stroke();});ctx.restore();}
+function dDot(x,y,s,a,c){ctx.save();ctx.globalAlpha=a;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,s*.65,0,Math.PI*2);ctx.fill();ctx.restore();}
+function tick(){ctx.clearRect(0,0,W,H);while(pts.length<62)pts.push(mkP());pts.forEach((p,i)=>{p.y+=p.sp;p.x+=p.dr;p.tp+=p.ts;const tw=.5+.5*Math.sin(p.tp);const a=p.op*tw;p.ty==='s'?dStar(p.x,p.y,p.sz,a,p.cl):dDot(p.x,p.y,p.sz,a,p.cl);if(p.y>H+10)pts.splice(i,1);});requestAnimationFrame(tick);}
+
+/* FADE-IN */
+function initFadeIns(){const els=document.querySelectorAll('.fade-in');const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08});els.forEach(el=>obs.observe(el));}
+</script>
+</body>
+</html>
